@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Arithmetic_operation</string>
     <string name="title_activity_sub">SubActivity</string>
+    <string name="title_activity_kakuni">kakuni</string>
 </resources>
