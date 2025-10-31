@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".result">
 
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ホームに戻る"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Time" />
+
+    <Button
+        android:id="@+id/Retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="リトライ"
+        app:layout_constraintBottom_toTopOf="@+id/Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Time"
+        app:layout_constraintVertical_bias="0.755" />
+
+    <Button
+        android:id="@+id/Time"
+        android:layout_width="161dp"
+        android:layout_height="76dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="151dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
