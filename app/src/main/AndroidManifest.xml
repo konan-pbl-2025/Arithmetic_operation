@@ -21,6 +21,9 @@
             android:label="@string/title_activity_sub"
             android:theme="@style/Theme.Arithmetic_operation" />
         <activity
+            android:name=".ArithmeticActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
