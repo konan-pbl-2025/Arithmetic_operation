@@ -11,4 +11,13 @@ public class ArithmeticActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arithmetic);
     }
+
+    public static int Plus(int x,int y){
+        int ans=x+y;
+        return ans;
+    }
+    public static int Minus(int x,int y){
+        int ans=x-y;
+        return ans;
+    }
 }
