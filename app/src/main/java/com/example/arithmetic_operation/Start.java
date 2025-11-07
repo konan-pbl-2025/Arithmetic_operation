@@ -14,13 +14,13 @@ public class Start extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_main);
 
         Button easyButton = (Button)findViewById(R.id.easy);
         easyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Start.this,easy.class);
+                Intent intent = new Intent(Start.this, Easy.class);
                 startActivity(intent);
             }
         });
@@ -29,7 +29,7 @@ public class Start extends AppCompatActivity {
         nomalButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Start.this,arithmetic.class);
+                Intent intent = new Intent(Start.this,Normal.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class Start extends AppCompatActivity {
         hardButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Start.this,hard.class);
+                Intent intent = new Intent(Start.this,Hard.class);
                 startActivity(intent);
             }
         });
