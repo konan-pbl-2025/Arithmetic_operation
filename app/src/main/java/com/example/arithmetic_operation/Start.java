@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import org.w3c.dom.Text;
-
 public class Start extends AppCompatActivity {
 
     @Override
@@ -25,7 +23,7 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        Button nomalButtton = (Button)findViewById(R.id.nomal);
+        Button nomalButtton = (Button)findViewById(R.id.normal);
         nomalButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
