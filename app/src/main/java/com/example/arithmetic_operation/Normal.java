@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class Normal extends AppCompatActivity {
 
     private TextView textView;
     private Button kakutei;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);//後ほどNormalのxmlに変更
+        setContentView(R.layout.activity_arithmetic);
 
         textView = findViewById(R.id.textView1);
         kakutei = findViewById(R.id.kakutei);
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         };
         opButtons = new Button[]{
                 findViewById(R.id.plus1), findViewById(R.id.plus2),
-                findViewById(R.id.plus3), findViewById(R.id.plus4)
+                findViewById(R.id.plus3)
         };
 
         Random rand = new Random();
