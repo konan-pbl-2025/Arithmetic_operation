@@ -6,33 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".result">
 
-    <Button
-        android:id="@+id/Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ホームに戻る"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="409dp"
+        android:layout_height="738dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Time" />
+        app:srcCompat="@android:drawable/screen_background_dark" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="414dp"
+        android:layout_height="163dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.572"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="146dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="288dp"
+        android:backgroundTint="@color/black"
+        android:text="ホームに戻る"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Retry"
-        android:layout_width="120dp"
+        android:layout_width="146dp"
         android:layout_height="53dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/black"
         android:text="リトライ"
         app:layout_constraintBottom_toTopOf="@+id/Back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Time"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/Time"
-        android:layout_width="161dp"
-        android:layout_height="76dp"
-        android:text="Button"
+        android:layout_width="240dp"
+        android:layout_height="102dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/Retry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="151dp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
