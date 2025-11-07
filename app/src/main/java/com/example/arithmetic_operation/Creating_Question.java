@@ -114,7 +114,7 @@ public class Creating_Question {
 
     // ハードモードの問題を生成（割り算を含む）
     public static int[] createHard() {
-        int[] question;
+        int[] question = new int[5];
         boolean validAnswer = false;
         Random rand = new Random();
 

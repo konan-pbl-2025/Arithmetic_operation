@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import org.w3c.dom.Text;
-
 public class Start extends AppCompatActivity {
 
     @Override
@@ -20,16 +18,16 @@ public class Start extends AppCompatActivity {
         easyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Start.this,easy.class);
+                Intent intent = new Intent(Start.this, Easy.class);
                 startActivity(intent);
             }
         });
 
-        Button nomalButtton = (Button)findViewById(R.id.nomal);
+        Button nomalButtton = (Button)findViewById(R.id.normal);
         nomalButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Start.this,arithmetic.class);
+                Intent intent = new Intent(Start.this,Normal.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +36,7 @@ public class Start extends AppCompatActivity {
         hardButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Start.this,hard.class);
+                Intent intent = new Intent(Start.this,Hard.class);
                 startActivity(intent);
             }
         });
