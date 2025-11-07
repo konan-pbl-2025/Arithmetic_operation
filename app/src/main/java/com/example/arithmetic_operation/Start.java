@@ -14,7 +14,7 @@ public class Start extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_main);
 
         Button easyButton = (Button)findViewById(R.id.easy);
         easyButton.setOnClickListener(new View.OnClickListener() {
