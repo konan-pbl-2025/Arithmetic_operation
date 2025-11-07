@@ -33,7 +33,7 @@ public class result extends AppCompatActivity {
         String mode = intent.getStringExtra("mode");
 
         if("Easy".equals(mode)) {
-            Button RetlyButton = (Button)findViewById(R.id.Retly);
+            Button RetlyButton = (Button)findViewById(R.id.Retry);
             RetlyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -42,7 +42,7 @@ public class result extends AppCompatActivity {
                 }
             });
         }else if("Normal".equals(mode)){
-            Button RetlyButton = (Button)findViewById(R.id.Retly);
+            Button RetlyButton = (Button)findViewById(R.id.Retry);
             RetlyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -51,7 +51,7 @@ public class result extends AppCompatActivity {
                 }
             });
         }else if("Hard".equals(mode)){
-            Button RetlyButton = (Button)findViewById(R.id.Retly);
+            Button RetlyButton = (Button)findViewById(R.id.Retry);
             RetlyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
