@@ -21,7 +21,7 @@ public class Hard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_hard);
 
         textView = findViewById(R.id.textView1);
         kakutei = findViewById(R.id.kakutei);
