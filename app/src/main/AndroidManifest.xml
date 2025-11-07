@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Arithmetic_operation"
         tools:targetApi="31">
         <activity
+            android:name=".Start"
+            android:exported="false" />
+        <activity
+            android:name=".kakuni"
+            android:exported="false"
+            android:label="@string/title_activity_kakuni"
+            android:theme="@style/Theme.Arithmetic_operation" />
             android:name=".result"
             android:exported="false" />
         <activity
