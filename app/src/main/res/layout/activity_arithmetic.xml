@@ -153,20 +153,6 @@
         app:layout_constraintTop_toBottomOf="@+id/plus1"
         app:layout_constraintVertical_bias="0.253" />
 
-    <Button
-        android:id="@+id/plus4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:text="÷"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.732"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plus2"
-        app:layout_constraintVertical_bias="0.253" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="227dp"
@@ -222,6 +208,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/time"
         android:layout_width="147dp"
         android:layout_height="51dp"
         android:textSize="34sp"
