@@ -33,7 +33,7 @@ public class Normal extends AppCompatActivity {
         };
         opButtons = new Button[]{
                 findViewById(R.id.plus1), findViewById(R.id.plus2),
-                findViewById(R.id.plus3), findViewById(R.id.plus4)
+                findViewById(R.id.plus3)
         };
 
         Random rand = new Random();
