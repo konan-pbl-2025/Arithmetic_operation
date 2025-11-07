@@ -15,7 +15,7 @@ public class result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        Button backButton = (Button)findViewById(R.id.back);
+        Button backButton = (Button)findViewById(R.id.Back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,14 +27,14 @@ public class result extends AppCompatActivity {
         Intent intent = getIntent();
         String timer = intent.getStringExtra("timer");
 
-        TextView textView = findViewById(R.id.textView);
+        TextView textView = findViewById(R.id.Time);
         textView.setText("タイム: "+ timer);
 
         String mode = intent.getStringExtra("mode");
 
         if("Easy".equals(mode)) {
-            Button retlyButton = (Button)findViewById(R.id.retly);
-            retlyButton.setOnClickListener(new View.OnClickListener() {
+            Button RetlyButton = (Button)findViewById(R.id.Retly);
+            RetlyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(result.this,Easy.class);
@@ -42,8 +42,8 @@ public class result extends AppCompatActivity {
                 }
             });
         }else if("Normal".equals(mode)){
-            Button retlyButton = (Button)findViewById(R.id.retly);
-            retlyButton.setOnClickListener(new View.OnClickListener() {
+            Button RetlyButton = (Button)findViewById(R.id.Retly);
+            RetlyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(result.this,Normal.class);
@@ -51,8 +51,8 @@ public class result extends AppCompatActivity {
                 }
             });
         }else if("Hard".equals(mode)){
-            Button retlyButton = (Button)findViewById(R.id.retly);
-            retlyButton.setOnClickListener(new View.OnClickListener() {
+            Button RetlyButton = (Button)findViewById(R.id.Retly);
+            RetlyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(result.this,Hard.class);
