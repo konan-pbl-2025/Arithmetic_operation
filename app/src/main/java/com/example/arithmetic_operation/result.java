@@ -33,6 +33,5 @@ public class result extends AppCompatActivity {
         Button retry = findViewById(R.id.Retry);
         retry.setOnClickListener(v -> finish());
 
-        }
     }
 }
