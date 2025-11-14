@@ -30,35 +30,9 @@ public class result extends AppCompatActivity {
         TextView textView = findViewById(R.id.Time);
         textView.setText("タイム: "+ timer);
 
-        String mode = intent.getStringExtra("mode");
+        Button retry = findViewById(R.id.Retry);
+        retry.setOnClickListener(v -> finish());
 
-        if("Easy".equals(mode)) {
-            Button RetlyButton = (Button)findViewById(R.id.Retry);
-            RetlyButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(result.this,Easy.class);
-                    startActivity(intent);
-                }
-            });
-        }else if("Normal".equals(mode)){
-            Button RetlyButton = (Button)findViewById(R.id.Retry);
-            RetlyButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(result.this,Normal.class);
-                    startActivity(intent);
-                }
-            });
-        }else if("Hard".equals(mode)){
-            Button RetlyButton = (Button)findViewById(R.id.Retry);
-            RetlyButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(result.this,Hard.class);
-                    startActivity(intent);
-                }
-            });
         }
     }
 }
