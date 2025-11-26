@@ -38,18 +38,18 @@ public class Easy extends AppCompatActivity {
 
         Random rand = new Random();
         //ここから
-        int[] initVals=Creating_Question.createEasy();
+        int[] initValues=Creating_Question.createEasy();
         int j=0;
         for (Button b : numButtons) {
 
 
-            b.setText(String.valueOf(initVals[j]));
+            b.setText(String.valueOf(initValues[j]));
             j++;
         }
         //ここまで
         String[] ops = {"+", "-", "×"};
         for (int i = 0; i < numButtons.length; i++)
-            numButtons[i].setText(String.valueOf(initVals[i]));
+            numButtons[i].setText(String.valueOf(initValues[i]));
         for (int i = 0; i < opButtons.length; i++)
             opButtons[i].setText(ops[i]);
 
