@@ -23,8 +23,8 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        Button nomalButtton = (Button)findViewById(R.id.normal);
-        nomalButtton.setOnClickListener(new View.OnClickListener() {
+        Button normalButton = (Button)findViewById(R.id.normal);
+        normalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Start.this,Normal.class);
@@ -32,8 +32,8 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        Button hardButtton = (Button)findViewById(R.id.hard);
-        hardButtton.setOnClickListener(new View.OnClickListener() {
+        Button hardButton = (Button)findViewById(R.id.hard);
+        hardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Start.this,Hard.class);
