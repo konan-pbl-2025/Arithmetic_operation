@@ -19,6 +19,9 @@
             android:name=".Easy"
             android:exported="false" />
         <activity
+            android:name=".Normal"
+            android:exported="false" />
+        <activity
             android:name=".Start"
             android:exported="false" />
         <activity
