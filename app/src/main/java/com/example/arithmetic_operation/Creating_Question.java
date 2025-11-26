@@ -56,22 +56,22 @@ public class Creating_Question {
 
         switch (number) {
             case 1:
-                question[5] = question[0] - question[1] + question[2] + question[3] - question[4];  // 足し算
+                question[4] = question[0] - question[1] + question[2] + question[3] - question[4];  // 足し算
                 break;
             case 2:
-                question[5] = question[0] + question[1] - question[2] + question[3] - question[4];// 引き算
+                question[4] = question[0] + question[1] - question[2] + question[3] - question[4];// 引き算
                 break;
             case 3:
-                question[5] = question[0] * question[1] + question[2] - question[3] + question[4];// 掛け算
+                question[4] = question[0] * question[1] + question[2] - question[3] + question[4];// 掛け算
                 break;
             case 4:
-                question[5] = question[0] + question[1] * question[2] - question[3] + question[4];
+                question[4] = question[0] + question[1] * question[2] - question[3] + question[4];
                 break;
             case 5:
-                question[5] = question[0] * question[1] - question[2] * question[3] + question[4];// 足し算 + 掛け算
+                question[4] = question[0] * question[1] - question[2] * question[3] + question[4];// 足し算 + 掛け算
                 break;
             case 6:
-                question[5] = question[0] + question[1] - question[2] * question[3] + question[4];// 掛け算 + 足し算
+                question[4] = question[0] + question[1] - question[2] * question[3] + question[4];// 掛け算 + 足し算
                 break;
         }
 
@@ -86,22 +86,22 @@ public class Creating_Question {
 
         switch (number) {
             case 1:
-                question[5] = question[0] * question[3] + question[1] - question[4] + question[2];
+                question[4] = question[0] * question[3] + question[1] - question[4] + question[2];
                 break;
             case 2:
-                question[5] = question[0] - question[1] - question[2] + question[3] * question[4];
+                question[4] = question[0] - question[1] - question[2] + question[3] * question[4];
                 break;
             case 3:
-                question[5] = question[1] + question[2] * question[0] - question[4] - question[3];
+                question[4] = question[1] + question[2] * question[0] - question[4] - question[3];
                 break;
             case 4:
-                question[5] = question[2] * question[1] + question[3] - question[0] * question[4];
+                question[4] = question[2] * question[1] + question[3] - question[0] * question[4];
                 break;
             case 5:
-                question[5] = question[1] * question[0] + question[2] - question[3] + question[4];
+                question[4] = question[1] * question[0] + question[2] - question[3] + question[4];
                 break;
             case 6:
-                question[5] = question[0] + question[1] * question[3] - question[2] + question[4];
+                question[4] = question[0] + question[1] * question[3] - question[2] + question[4];
                 break;
         }
 
@@ -121,37 +121,37 @@ public class Creating_Question {
             switch (number) {
                 case 1:
                     if (question[1] != 0 && question[0] % question[1] == 0) {
-                        question[5] = question[0] / question[1] + question[2] * question[3] * question[4];  // 割り算 + 掛け算
+                        question[4] = question[0] / question[1] + question[2] * question[3] * question[4];  // 割り算 + 掛け算
                         validAnswer = true;
                     }
                     break;
                 case 2:
                     if (question[2] != 0 && question[1] % question[2] == 0) {
-                        question[5] = question[0] * question[3] + question[4] - question[2] / question[1];  // 掛け算 + 割り算
+                        question[4] = question[0] * question[3] + question[4] - question[2] / question[1];  // 掛け算 + 割り算
                         validAnswer = true;
                     }
                     break;
                 case 3:
                     if (question[3] != 0 && question[0] % question[3] == 0) {
-                        question[5] = question[0] / question[3] + question[2] * question[1] - question[4];  // 割り算 + 掛け算
+                        question[4] = question[0] / question[3] + question[2] * question[1] - question[4];  // 割り算 + 掛け算
                         validAnswer = true;
                     }
                     break;
                 case 4:
                     if (question[0] != 0 && question[3] % question[0] == 0) {
-                        question[5] = question[2] * question[1] - question[4] + question[3] / question[0];  // 掛け算 + 割り算
+                        question[4] = question[2] * question[1] - question[4] + question[3] / question[0];  // 掛け算 + 割り算
                         validAnswer = true;
                     }
                     break;
                 case 5:
                     if (question[3] != 0 && question[2] % question[3] == 0) {
-                        question[5] = question[1] * question[0] - question[2] / question[3] + question[4];  // 掛け算 + 割り算
+                        question[4] = question[1] * question[0] - question[2] / question[3] + question[4];  // 掛け算 + 割り算
                         validAnswer = true;
                     }
                     break;
                 case 6:
                     if (question[4] != 0 && question[2] % question[4] == 0) {
-                        question[5] = question[0] * question[3] + question[1] * question[2] / question[4];  // 足し算 + 割り算
+                        question[4] = question[0] * question[3] + question[1] * question[2] / question[4];  // 足し算 + 割り算
                         validAnswer = true;
                     }
                     break;
