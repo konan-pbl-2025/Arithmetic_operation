@@ -1,6 +1,8 @@
 package com.example.arithmetic_operation;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,22 +12,80 @@ import java.util.Random;
 
 public class Normal extends AppCompatActivity {
 
-    private TextView textView;
+    private TextView textView1;
+    private TextView textView2,total_count,timer;
     private Button kakutei;
     private Button[] numButtons, opButtons;
 
     private String left = "", op = "", right = "", lastType = "";
     private Button leftBtn, rightBtn;
     private boolean firstDone = false, okMode = false, lastNumPressed = false;
+    private int count = 0;
 
+    // ---- タイマー関連 ----ここから追加
+    private Handler timerHandler = new Handler();
+    private long startTime = 0L;
+    private boolean timerRunning = false;
+    private Button reset;//これ追加
+    private String[] resetVals = new String[5];//これ追加
+    private boolean isNewGame = true;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (isNewGame) {
+            resetTimer(); // 表示と時間をリセット
+            startTimer();
+            isNewGame = false;
+        }
+    }
+
+
+    private final Runnable timerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (!timerRunning) return;
+
+            long millis = System.currentTimeMillis() - startTime;
+            int minutes = (int) (millis / 60000);
+            int seconds = (int) ((millis / 1000) % 60);
+            int centiseconds = (int) ((millis % 1000) / 10);
+
+            String time = String.format("%02d:%02d:%02d", minutes, seconds, centiseconds);
+            timer.setText(time);
+
+            timerHandler.postDelayed(this, 10);
+        }
+    };
+
+    private void startTimer() {
+        startTime = System.currentTimeMillis();
+        timerRunning = true;
+        timerHandler.post(timerRunnable);
+    }
+
+    private void stopTimer() {
+        timerRunning = false;
+    }
+
+    private void resetTimer() {
+        timerRunning = false;
+        timer.setText("00:00:00");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arithmetic);
 
-        textView = findViewById(R.id.textView1);
-        kakutei = findViewById(R.id.kakutei);
+        textView1 = findViewById(R.id.textView1);
 
+        textView2 = findViewById(R.id.textView2);
+
+        kakutei = findViewById(R.id.kakutei);
+        total_count = findViewById(R.id.problem);//これも　カウント用
+        timer = findViewById(R.id.time); // ← タイマー表示TextView
+        reset = findViewById(R.id.reset);
         numButtons = new Button[]{
                 findViewById(R.id.num1), findViewById(R.id.num2),
                 findViewById(R.id.num3), findViewById(R.id.num4),
@@ -35,22 +95,21 @@ public class Normal extends AppCompatActivity {
                 findViewById(R.id.plus1), findViewById(R.id.plus2),
                 findViewById(R.id.plus3)
         };
+        total_count.setText(count + "/3問正解");
+        int[] question = Creating_Question.createNormal();
 
-        Random rand = new Random();
-        //ここから
-        int[] initVals={0,0,0,0,0,0};
-        int j=0;
-        for (Button b : numButtons) {
-
-            int val = rand.nextInt(9) + 1; // 1〜9のランダム数
-            initVals[j]=val;
-            j++;
-            b.setText(String.valueOf(val));
+        for (int i = 0; i < numButtons.length; i++) {
+            numButtons[i].setText(String.valueOf(question[i]));
         }
+
+        textView2.setText(String.valueOf(question[5]));
+        for (int i = 0; i < numButtons.length; i++) {
+            resetVals[i] = numButtons[i].getText().toString(); // ← 初期値保存
+        }
+        reset.setOnClickListener(v->resetAll());
         //ここまで
         String[] ops = {"+", "-", "×", "÷"};
-        for (int i = 0; i < numButtons.length; i++)
-            numButtons[i].setText(String.valueOf(initVals[i]));
+
         for (int i = 0; i < opButtons.length; i++)
             opButtons[i].setText(ops[i]);
 
@@ -59,6 +118,7 @@ public class Normal extends AppCompatActivity {
         kakutei.setOnClickListener(v -> onKakutei());
 
         updateStates();
+        startTimer();
     }
 
     private void onNum(Button b) {
@@ -67,7 +127,8 @@ public class Normal extends AppCompatActivity {
 
         if (okMode) {
             lastNumPressed = true;
-            textView.setText(val);
+            left=val;
+            textView1.setText(val);
             updateStates();
             return;
         }
@@ -75,19 +136,19 @@ public class Normal extends AppCompatActivity {
         if (!firstDone) {
             left = val;
             leftBtn = b;
-            textView.setText(left);
+            textView1.setText(left);
             firstDone = true;
             lastType = "num";
         } else if (!op.isEmpty()) {
             if (b == leftBtn) return;
             right = val;
             rightBtn = b;
-            textView.setText(left + op + right);
+            textView1.setText(left + op + right);
             lastType = "num";
         } else {
             left = val;
             leftBtn = b;
-            textView.setText(left);
+            textView1.setText(left);
         }
         updateStates();
     }
@@ -95,7 +156,7 @@ public class Normal extends AppCompatActivity {
     private void onOp(Button b) {
         if (okMode || !firstDone || !right.isEmpty()) return;
         op = b.getText().toString();
-        textView.setText(left + op);
+        textView1.setText(left + op);
         lastType = "op";
         updateStates();
     }
@@ -104,11 +165,38 @@ public class Normal extends AppCompatActivity {
         if (okMode) {
             if (!lastNumPressed) return;
             //与えられた値と作った値が同じか
+            try {
+                BigDecimal l = new BigDecimal(left);
+                BigDecimal target = new BigDecimal(textView2.getText().toString()); // 正しい合計値
+
+                if (l.compareTo(target) == 0) {
+                    count++;
+                }
+
+                total_count.setText(count + "/3問正解");
+
+                if (count == 3) {
+                    count = 0;
+                    stopTimer();   // タイマー停止
+                    Intent intent = new Intent(Normal.this, result.class);//resultActivityはリザルト用に変更
+                    String timeValue = timer.getText().toString();  // 例："00:23:45"
+                    intent.putExtra("TIME_VALUE", timeValue);
+                    String mode="2";
+                    intent.putExtra("MODE",mode);
+                    isNewGame=true;
+                    startActivity(intent);//これらはリザルト画面に行くときにする*/
+                    onRestart();
+                    return;
+                }
+
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
             //もしそうなら回数1増やす
             resetNums();
-            kakutei.setText("確定");
+            kakutei.setText("=");
             okMode = lastNumPressed = false;
-            textView.setText("");
+            textView1.setText("");
             updateStates();
             return;
         }
@@ -135,7 +223,12 @@ public class Normal extends AppCompatActivity {
                     break;
                 case "÷":
                     if (r.compareTo(BigDecimal.ZERO) == 0) {
-                        textView.setText(exp + " = エラー");
+                        textView1.setText(exp + " = エラー");
+                        op = "";          // 演算子リセット
+                        right = "";       // 右辺クリア
+                        rightBtn = null;  // ボタン選択解除
+                        lastType = "";    // 状態リセット
+                        updateStates();
                         return;
                     }
                     result = l.divide(r, 6, RoundingMode.HALF_UP); // 小数6桁まで正確に割り算
@@ -150,7 +243,7 @@ public class Normal extends AppCompatActivity {
             resultText = result.scale() <= 0 ? result.toPlainString()
                     : result.setScale(Math.min(result.scale(), 3), RoundingMode.HALF_UP).toPlainString();
 
-            textView.setText(exp + " = " + resultText);
+            textView1.setText(exp + " = " + resultText);
 
             leftBtn.setText(resultText);
             rightBtn.setText("");
@@ -158,7 +251,7 @@ public class Normal extends AppCompatActivity {
             rightBtn.setAlpha(0.4f);
 
         } catch (Exception e) {
-            textView.setText("エラー");
+            textView1.setText("エラー");
             return;
         }
 //ここまで
@@ -202,13 +295,20 @@ public class Normal extends AppCompatActivity {
     }
 
     private void resetNums() {
-        //ここから
-        Random rand = new Random();
-        for (Button b : numButtons) {
-            b.setText(String.valueOf(rand.nextInt(9) + 1));
-            b.setEnabled(true);
-            b.setAlpha(1f);
+        // 新しい問題を作る
+        int[] question = Creating_Question.createNormal();
+
+        // numButtons に question[0]〜[4] をセット
+        for (int i = 0; i < numButtons.length; i++) {
+            numButtons[i].setText(String.valueOf(question[i]));
+            numButtons[i].setEnabled(true);
+            numButtons[i].setAlpha(1f);
         }
+        for (int i = 0; i < numButtons.length; i++) {
+            resetVals[i] = numButtons[i].getText().toString(); // ← 初期値保存
+        }
+        // textView2 に question[5] をセット
+        textView2.setText(String.valueOf(question[5]));
     }
 
     private int remainingButtons() {
@@ -220,4 +320,22 @@ public class Normal extends AppCompatActivity {
 
     private void disable(Button b) { b.setEnabled(false); b.setAlpha(0.4f); }
     private void enable(Button b, boolean e) { b.setEnabled(e); b.setAlpha(e ? 1f : 0.4f); }
+    private void resetAll() {
+        left = "";
+        op = "";
+        right = "";
+        textView1.setText("");
+        firstDone=false;
+        okMode=false;
+        lastNumPressed=false;
+        leftBtn=null;
+        rightBtn=null;
+        for (int i = 0; i < numButtons.length; i++) {
+            numButtons[i].setEnabled(true);
+            numButtons[i].setAlpha(1f);
+            numButtons[i].setText(String.valueOf(resetVals[i])); // ←初期値に戻す！
+        }
+
+        rightBtn = null;
+    }
 }

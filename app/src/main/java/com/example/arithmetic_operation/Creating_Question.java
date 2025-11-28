@@ -5,7 +5,7 @@ public class Creating_Question {
 
     // 共通部分：ランダムな数字を生成するメソッド（イージーモード）
     private static int[] generateEasyRandomNumbers() {
-        int[] question = new int[5];
+        int[] question = new int[6];
         Random rand = new Random();
 
         for (int i = 0; i < 5; i++) {
@@ -17,7 +17,7 @@ public class Creating_Question {
 
     // 共通部分：ランダムな数字を生成するメソッド（ノーマルモード）
     private static int[] generateNormalRandomNumbers() {
-        int[] question = new int[5];
+        int[] question = new int[6];
         Random rand = new Random();
 
         for (int i = 0; i < 5; i++) {
@@ -33,7 +33,7 @@ public class Creating_Question {
 
     // ハードモードの計算（割り算を含む）
     private static int[] generateHardRandomNumbers() {
-        int[] question = new int[5];
+        int[] question = new int[6];
         Random rand = new Random();
 
         // -9から9までのランダムな数字を5つ生成、0は除外
