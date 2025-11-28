@@ -183,7 +183,8 @@ public class Easy extends AppCompatActivity {
                     Intent intent = new Intent(Easy.this, result.class);//resultActivityはリザルト用に変更
                     String timeValue = timer.getText().toString();  // 例："00:23:45"
                     intent.putExtra("TIME_VALUE", timeValue);
-                    intent.putExtra("MODE",1);
+                    String mode="1";
+                    intent.putExtra("MODE",mode);
                     isNewGame=true;
                     startActivity(intent);//これらはリザルト画面に行くときにする*/
                     onRestart();
