@@ -10,7 +10,8 @@ import java.util.Random;
 
 public class Normal extends AppCompatActivity {
 
-    private TextView textView;
+    private TextView textView1;
+    private TextView textView2;
     private Button kakutei;
     private Button[] numButtons, opButtons;
 
@@ -23,7 +24,10 @@ public class Normal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arithmetic);
 
-        textView = findViewById(R.id.textView1);
+        textView1 = findViewById(R.id.textView1);
+
+        textView2 = findViewById(R.id.textView2);
+
         kakutei = findViewById(R.id.kakutei);
 
         numButtons = new Button[]{
@@ -36,21 +40,17 @@ public class Normal extends AppCompatActivity {
                 findViewById(R.id.plus3)
         };
 
-        Random rand = new Random();
-        //ここから
-        int[] initVals={0,0,0,0,0,0};
-        int j=0;
-        for (Button b : numButtons) {
+        int[] question = Creating_Question.createNormal();
 
-            int val = rand.nextInt(9) + 1; // 1〜9のランダム数
-            initVals[j]=val;
-            j++;
-            b.setText(String.valueOf(val));
+        for (int i = 0; i < numButtons.length; i++) {
+            numButtons[i].setText(String.valueOf(question[i]));
         }
+
+        textView2.setText(String.valueOf(question[5]));
+
         //ここまで
         String[] ops = {"+", "-", "×", "÷"};
-        for (int i = 0; i < numButtons.length; i++)
-            numButtons[i].setText(String.valueOf(initVals[i]));
+
         for (int i = 0; i < opButtons.length; i++)
             opButtons[i].setText(ops[i]);
 
@@ -67,7 +67,7 @@ public class Normal extends AppCompatActivity {
 
         if (okMode) {
             lastNumPressed = true;
-            textView.setText(val);
+            textView1.setText(val);
             updateStates();
             return;
         }
@@ -75,19 +75,19 @@ public class Normal extends AppCompatActivity {
         if (!firstDone) {
             left = val;
             leftBtn = b;
-            textView.setText(left);
+            textView1.setText(left);
             firstDone = true;
             lastType = "num";
         } else if (!op.isEmpty()) {
             if (b == leftBtn) return;
             right = val;
             rightBtn = b;
-            textView.setText(left + op + right);
+            textView1.setText(left + op + right);
             lastType = "num";
         } else {
             left = val;
             leftBtn = b;
-            textView.setText(left);
+            textView1.setText(left);
         }
         updateStates();
     }
@@ -95,7 +95,7 @@ public class Normal extends AppCompatActivity {
     private void onOp(Button b) {
         if (okMode || !firstDone || !right.isEmpty()) return;
         op = b.getText().toString();
-        textView.setText(left + op);
+        textView1.setText(left + op);
         lastType = "op";
         updateStates();
     }
@@ -108,7 +108,7 @@ public class Normal extends AppCompatActivity {
             resetNums();
             kakutei.setText("確定");
             okMode = lastNumPressed = false;
-            textView.setText("");
+            textView1.setText("");
             updateStates();
             return;
         }
@@ -135,7 +135,7 @@ public class Normal extends AppCompatActivity {
                     break;
                 case "÷":
                     if (r.compareTo(BigDecimal.ZERO) == 0) {
-                        textView.setText(exp + " = エラー");
+                        textView1.setText(exp + " = エラー");
                         return;
                     }
                     result = l.divide(r, 6, RoundingMode.HALF_UP); // 小数6桁まで正確に割り算
@@ -150,7 +150,7 @@ public class Normal extends AppCompatActivity {
             resultText = result.scale() <= 0 ? result.toPlainString()
                     : result.setScale(Math.min(result.scale(), 3), RoundingMode.HALF_UP).toPlainString();
 
-            textView.setText(exp + " = " + resultText);
+            textView1.setText(exp + " = " + resultText);
 
             leftBtn.setText(resultText);
             rightBtn.setText("");
@@ -158,7 +158,7 @@ public class Normal extends AppCompatActivity {
             rightBtn.setAlpha(0.4f);
 
         } catch (Exception e) {
-            textView.setText("エラー");
+            textView1.setText("エラー");
             return;
         }
 //ここまで
