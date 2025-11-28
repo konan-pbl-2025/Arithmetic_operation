@@ -186,7 +186,7 @@
         android:layout_height="71dp"
         android:layout_marginBottom="412dp"
         android:backgroundTint="@color/black"
-        android:text="OK"
+        android:text="="
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
         android:textSize="24sp"
