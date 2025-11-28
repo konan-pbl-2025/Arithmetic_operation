@@ -186,7 +186,6 @@
         android:id="@+id/textView2"
         android:layout_width="165dp"
         android:layout_height="129dp"
-        android:text="100"
         android:textColor="@color/white"
         android:textSize="96sp"
         app:layout_constraintBottom_toBottomOf="parent"
