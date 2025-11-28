@@ -202,13 +202,18 @@ public class Normal extends AppCompatActivity {
     }
 
     private void resetNums() {
-        //ここから
-        Random rand = new Random();
-        for (Button b : numButtons) {
-            b.setText(String.valueOf(rand.nextInt(9) + 1));
-            b.setEnabled(true);
-            b.setAlpha(1f);
+        // 新しい問題を作る
+        int[] question = Creating_Question.createNormal();
+
+        // numButtons に question[0]〜[4] をセット
+        for (int i = 0; i < numButtons.length; i++) {
+            numButtons[i].setText(String.valueOf(question[i]));
+            numButtons[i].setEnabled(true);
+            numButtons[i].setAlpha(1f);
         }
+
+        // textView2 に question[5] をセット
+        textView2.setText(String.valueOf(question[5]));
     }
 
     private int remainingButtons() {
