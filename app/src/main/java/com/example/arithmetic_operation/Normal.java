@@ -194,7 +194,7 @@ public class Normal extends AppCompatActivity {
             }
             //もしそうなら回数1増やす
             resetNums();
-            kakutei.setText("確定");
+            kakutei.setText("=");
             okMode = lastNumPressed = false;
             textView1.setText("");
             updateStates();
@@ -325,7 +325,11 @@ public class Normal extends AppCompatActivity {
         op = "";
         right = "";
         textView1.setText("");
-
+        firstDone=false;
+        okMode=false;
+        lastNumPressed=false;
+        leftBtn=null;
+        rightBtn=null;
         for (int i = 0; i < numButtons.length; i++) {
             numButtons[i].setEnabled(true);
             numButtons[i].setAlpha(1f);

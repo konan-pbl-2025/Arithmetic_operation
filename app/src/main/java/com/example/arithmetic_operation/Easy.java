@@ -195,7 +195,7 @@ public class Easy extends AppCompatActivity {
                 e.printStackTrace();
             }
             resetNums();
-            kakutei.setText("確定");
+            kakutei.setText("=");
             okMode = lastNumPressed = false;
             textView.setText("");
             updateStates();
@@ -325,7 +325,11 @@ public class Easy extends AppCompatActivity {
         op = "";
         right = "";
         textView.setText("");
-
+        firstDone=false;
+        okMode=false;
+        lastNumPressed=false;
+        leftBtn=null;
+        rightBtn=null;
         for (int i = 0; i < numButtons.length; i++) {
             numButtons[i].setEnabled(true);
             numButtons[i].setAlpha(1f);
