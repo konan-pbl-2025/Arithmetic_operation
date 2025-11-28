@@ -83,7 +83,7 @@ public class Hard extends AppCompatActivity {
         total = findViewById(R.id.textView2);//これ追加　問題の答え
         total_count = findViewById(R.id.problem);//これも　カウント用
         timer = findViewById(R.id.time); // ← タイマー表示TextView
-        //reset = findViewById(R.id.reset);
+        reset = findViewById(R.id.reset);
 
         numButtons = new Button[]{
                 findViewById(R.id.num1), findViewById(R.id.num2),
