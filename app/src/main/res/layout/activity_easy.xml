@@ -172,7 +172,7 @@
         android:layout_height="76dp"
         android:layout_marginBottom="412dp"
         android:backgroundTint="@color/black"
-        android:text="確定"
+        android:text="="
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
         android:textSize="24sp"
@@ -189,7 +189,6 @@
         android:layout_height="129dp"
         android:textColor="@color/white"
         android:textSize="96sp"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -225,12 +224,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:text="リセット"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="0.981"
+        tools:text="リセット" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
